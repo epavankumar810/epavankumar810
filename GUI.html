@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      table,
+      th,
+      td {
+        border: 1px solid black;
+      }
+      th,
+      td {
+        border-color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <form name="user_data" onsubmit="add_data(event)">
+      <table>
+        <tr>
+          <td>Athlete Name</td>
+          <td><input name=" name" type="text" placeholder="" /></td>
+        </tr>
+        <tr>
+          <td>Gender</td>
+          <td>
+            <label for="male">male</label>
+            <input type="radio" id="html" name="gender" value="male" />
+              <label for="female">female</label>  
+            <input type="radio" id="female" name="gender" value="female" />
+             
+          </td>
+        </tr>
+
+        <tr>
+          <td>Category</td>
+          <td>
+            <select name="games" id="games">
+              <option value="select" selected>Select</option>
+              <option value="running">Running</option>
+              <option value="highjump">High Jump</option>
+              <option value="hurdle">Hurdle</option>
+              <option value="eelay">Relay</option>
+              <option value="javelinthrow">Javelin Throw</option>
+              <option value="shotput">Shot put</option>
+            </select>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Email</td>
+          <td><input name="email" type="email" placeholder="" /></td>
+        </tr>
+
+        <tr>
+          <td>Mobile</td>
+          <td>
+            <input name="mobile" type="text" maxlength="10" placeholder="" />
+          </td>
+        </tr>
+
+        <tr>
+          <td><button type="submit">add</button><button>cancel</button></td>
+          <td><a href="#">home</a></td>
+        </tr>
+      </table>
+    </form>
+
+    <div id="data"></div>
+
+    <script>
+      function add_data(event) {
+        event.preventDefault();
+        const get_data = document.forms["user_data"];
+        let data = [];
+        let child_data = {
+          name: get_data.name.value,
+          gender: get_data.gender.value,
+          category: get_data.games.value,
+          email: get_data.email.value,
+          mobile: get_data.mobile.value,
+        };
+
+        data.push(child_data);
+        // document.getElementById("data").innerText = data;
+        document.getElementById("data").innerHTML +=
+          data[data.length - 1].name +
+          " " +
+          data[data.length - 1].gender +
+          " " +
+          data[data.length - 1].category +
+          " " +
+          data[data.length - 1].email +
+          " " +
+          data[data.length - 1].mobile;
+      }
+    </script>
+  </body>
+</html>
